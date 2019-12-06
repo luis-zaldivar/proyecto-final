@@ -29,7 +29,7 @@ int main(){
               break;
         case 2:
             ped=visualizar();
-            if(ped!="No hay pedidos menso xd")
+            if(ped!="No hay pedidos ")
                 cout<<"El primer pedido  es: "<<ped;
             else
                 cout<<"La lista de pedidos esta vacio"<<endl;
@@ -74,5 +74,5 @@ string visualizar(){
     if (cola!=NULL){
         return cola->pedido;
     }
-    return "No hay pedidos menso ";
+    return "No hay pedidos  ";
 }

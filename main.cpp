@@ -12,24 +12,24 @@ struct NODO1{
     NODO1*siguiente;
 }; NODO1* cola1=NULL;
 struct NODO2{
-    int dato;
+    string dato;
     NODO2*siguiente;
 }; NODO2*cola2=NULL;
 
 
 void agregar(string);
 void agregardir(string);
-void agregartel(int );
+void agregartel(string );
 void eliminar();
 void eliminardir();
 void eliminartel();
 string visualizar();
 string visualizardir();
-int visualizartel();
+string visualizartel();
 
 int main(){
-	int opcion, rep=1,add,num;
-	string orden, ped,dir;
+	int opcion, rep=1;
+	string orden, ped,dir,add,num;
 	while (rep==1){
       cout<<"\t\t ...::MENU::...\n 1.-Inserter pedido \n 2.-Mostrar pedido \n 3.-Elimnar\n 4.-salir\n";
       cin>>opcion;
@@ -42,13 +42,14 @@ int main(){
               cout<<"Introduzca la direccion: "; 
               getline(cin,dir); ///Lee una linea con espacios
               agregardir(dir);
-              cout<<"Introduzca algun numero de telefono: "; cin>>add;
-	          agregartel(add);
+              cout<<"Introduzca algun numero de telefono: "; 
+              getline(cin,add); ///Lee una linea con espacios
+              agregartel(add);
               break;
         case 2:
-        	num=visualizartel();
         	dir=visualizardir();
             ped=visualizar();
+            num=visualizartel();
             if(ped!="No hay pedidos "){
                 cout<<"El primer pedido  es: "<<ped<<endl;
                 cout<<"La direccion es: "<<dir<<endl;
@@ -103,7 +104,7 @@ void agregardir(string dir){
         aux->siguiente=NULL;
     }
 }
-void agregartel(int add){
+void agregartel(string add){
     if (cola2==NULL){
         cola2=new NODO2();
         cola2->dato=add;
@@ -151,10 +152,11 @@ string visualizardir(){
     }
     return "No hay pedidos  ";
 }
-int visualizartel(){
+string visualizartel(){
     if (cola2!=NULL){
         return cola2->dato;
-    }return -1;
+    }
+    return "No hay pedidos  ";
 }
 
 

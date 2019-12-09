@@ -115,16 +115,13 @@ int main(){
               insertarListatel(lista2,add);
               break;
         case 2:
-        	cout<<"La lista de pedidos es \n";
-        	mostrarLista(lista,lista1,lista2);
-        	cout<<"\nen forma de cola es \n";
-        	mostrar(cola,cola1,cola2);
+        	mostrarLista(cola,cola1,cola2);
             break;
         case 3:
         	cout<<"Cual es el producto que desea buscar: ";
         		getline(cin,orden);
 				getline(cin,orden);
-				buscar(lista,orden);
+				buscar(cola,orden);
 				break;
         	
         	break;
@@ -132,7 +129,7 @@ int main(){
           	cout<<"Deme el producto que ya a sido entregado: ";
 			getline(cin,orden);
 			getline(cin,orden);
-			eliminarpedido(lista,lista1,lista2,orden);/*
+			eliminarpedido(cola,cola1,cola2,orden);/*
           	
             eliminar();
             eliminardir();
@@ -291,13 +288,13 @@ void insertarListatel(NODO2 *&lista2,string telefo){
 }
 
 
-void mostrarLista(NODO *lista,NODO1 *lista1,NODO2 *lista2){
+void mostrarLista(NODO *cola,NODO1 *cola1,NODO2 *cola2){
 	NODO *actual = new NODO();
 	NODO1 *actual1 = new NODO1();
 	NODO2 *actual2 = new NODO2();
-	actual = lista;
-	actual1 = lista1;
-	actual2 = lista2;
+	actual = cola;
+	actual1 = cola1;
+	actual2 = cola2;
 	
 	while(actual != NULL){
 		cout<<"El pedido "<<actual -> pedido;
@@ -315,9 +312,9 @@ void mostrarLista(NODO *lista,NODO1 *lista1,NODO2 *lista2){
 }
 	
 
-void eliminarpedido(NODO *&lista,NODO1 *&lista1,NODO2 *&lista2, string n){
+void eliminarpedido(NODO *&cola,NODO1 *&cola1,NODO2 *&cola2, string n){
 	//Preguntar si la lista no esta vacia
-	if(lista != NULL){
+	if(cola != NULL){
 		NODO *aux_borrar;
 		NODO *anterior = NULL;
 
@@ -327,9 +324,9 @@ void eliminarpedido(NODO *&lista,NODO1 *&lista1,NODO2 *&lista2, string n){
     NODO2 *aux_borrar2;
 		NODO2 *anterior2 = NULL;
 		
-		aux_borrar = lista;
-    aux_borrar1=lista1;
-    aux_borrar2=lista2;
+		aux_borrar = cola;
+    aux_borrar1=cola1;
+    aux_borrar2=cola2;
 		
 		//Recorrer la lista
 		while((aux_borrar != NULL) && (aux_borrar -> pedido != n)){
@@ -349,7 +346,7 @@ void eliminarpedido(NODO *&lista,NODO1 *&lista1,NODO2 *&lista2, string n){
 		}
 		//El primer elemento es el que vamos a eliminar
 		else if(anterior == NULL){
-			lista = lista -> siguiente;
+			cola = cola -> siguiente;
 			delete aux_borrar;
 		}
 
@@ -360,7 +357,7 @@ void eliminarpedido(NODO *&lista,NODO1 *&lista1,NODO2 *&lista2, string n){
 		}
 
     if(anterior1 == NULL){
-			lista1 = lista1 -> siguiente;
+			cola1 = cola1 -> siguiente;
 			delete aux_borrar1;
 		}else{
 			anterior1 -> siguiente = aux_borrar1 -> siguiente;
@@ -368,7 +365,7 @@ void eliminarpedido(NODO *&lista,NODO1 *&lista1,NODO2 *&lista2, string n){
 		}
 
     if(anterior2 == NULL){
-			lista2 = lista2 -> siguiente;
+			cola2 = cola2 -> siguiente;
 			delete aux_borrar2;
 		}else{
 			anterior2 -> siguiente = aux_borrar2 -> siguiente;
